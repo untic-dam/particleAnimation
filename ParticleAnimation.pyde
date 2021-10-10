@@ -1,9 +1,10 @@
 from Particle import Particle
+from delaunay import Delaunay
 
 def setup():
     size(600, 600)
     global ps
-    ps = init_ps(20)
+    ps = init_ps(6)
     
     
     
@@ -13,7 +14,8 @@ def draw():
         #p.display()
         p.move()
     #connection_2points()
-    connection_3points()
+    #connection_3points()
+    connection_mesh()
     
 
 #################################
@@ -21,7 +23,7 @@ def draw():
 ################################# 
     
 def init_ps(n):
-    pss = []
+    ps_s = []
     for i in range(n):
         x = random(0, width)
         y = random(0, height)
@@ -29,9 +31,9 @@ def init_ps(n):
         ax = random(-3, 3)
         ay = random(-3, 3)
         p = Particle(x, y, r, ax, ay)
-        pss.append(p)
+        ps_s.append(p)
         
-    return pss
+    return ps_s
 
 def connection_2points():
     tot = len(ps) - 1 #total number of particles
@@ -61,6 +63,20 @@ def connection_3points():
             cnt = 0
             tgl = []
 
+def connection_mesh():
+    tot = len(ps)
+    n_triangle = tot - 2
+
+    for i in range(n_triangle):
+        i0 = i
+        i1 = i + 1
+        i2 = i + 2
+        tgl = [i0, i1, i2]
+        display_triangle(tgl)
+    
+def connection_mesh_short():
+    pass
+
 def display_triangle(tgl):
     p0 = ps[tgl[0]]
     p1 = ps[tgl[1]]
@@ -70,4 +86,6 @@ def display_triangle(tgl):
     stroke(0)
     strokeWeight(1)
     triangle(p0.x, p0.y, p1.x, p1.y, p2.x, p2.y)
+    
+
         
