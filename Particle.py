@@ -1,12 +1,19 @@
 class Particle():
 
-    def __init__(self, x, y, r):
+    def __init__(self, x, y, r, ax, ay):
         self.x = x
         self.y = y
         self.r = r
-        self.ax = 2
-        self.ay = -3
-        self.clr = color(12, 13, 100)
+        self.ax = ax
+        self.ay = ay
+    
+        self.clr = self.randomColor()
+    
+    def randomColor(self):
+        r = random(0,255)
+        g = random(0,255)
+        b = random(0,255)
+        return color(r, g, b)
    
     def display(self): 
         strokeWeight(self.r)
