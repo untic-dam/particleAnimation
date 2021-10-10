@@ -1,9 +1,9 @@
 class Particle():
 
-    def __init__(self):
-        self.x = 100
-        self.y = 100
-        self.r = 40
+    def __init__(self, x, y, r):
+        self.x = x
+        self.y = y
+        self.r = r
         self.ax = 2
         self.ay = -3
         self.clr = color(12, 13, 100)
