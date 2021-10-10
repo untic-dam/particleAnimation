@@ -3,14 +3,14 @@ from Particle import Particle
 def setup():
     size(600, 600)
     global ps
-    ps = init_ps(10)
+    ps = init_ps(20)
     
     
     
 def draw():
     background(255)
     for p in ps:
-        p.display()
+        #p.display()
         p.move()
     #connection_2points()
     connection_3points()
